@@ -1,0 +1,16 @@
+[build]
+  # Copies the site to dist/ and writes the live address (Netlify's $URL) into
+  # the og:image tag, which link previews need as an absolute URL.
+  command = 'rm -rf dist && cp -R public dist && sed -i.bak "s|%SITE_URL%|$URL|g" dist/index.html && rm dist/index.html.bak'
+  publish = "dist"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
