@@ -292,10 +292,121 @@ a:hover {
 
 /* Featured work */
 
-.work-grid {
+/* Carousel. Scrolling and snapping are native, so it works without scripting;
+   carousel.js adds the buttons and the progress bar. --cards is how many fit. */
+.carousel {
+  --cards: 1;
+  --card-gap: 32px;
+}
+
+@media (min-width: 700px) {
+  .carousel {
+    --cards: 2;
+  }
+}
+
+@media (min-width: 1060px) {
+  .carousel {
+    --cards: 3;
+  }
+}
+
+.carousel__track {
+  position: relative;
+  display: flex;
+  align-items: start;
+  gap: var(--card-gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
+}
+
+/* With more than one card in view, match their heights so the result lines
+   sit on one line, as they do in the design. One card in view needs no
+   alignment, and stretching would strand the result line at the bottom. */
+@media (min-width: 700px) {
+  .carousel__track {
+    align-items: stretch;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .carousel__track {
+    scroll-behavior: smooth;
+  }
+}
+
+/* The native scrollbar goes only once the buttons and progress bar replace it. */
+.carousel.is-ready .carousel__track {
+  scrollbar-width: none;
+}
+
+.carousel.is-ready .carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__track > .project {
+  flex: 0 0 calc((100% - (var(--cards) - 1) * var(--card-gap)) / var(--cards));
+  scroll-snap-align: start;
+}
+
+.carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.carousel__progress {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+  height: 2px;
+  background: var(--rule);
+}
+
+.carousel__bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--accent);
+}
+
+.carousel__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.carousel__button {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  gap: 44px 32px;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--outline);
+  border-radius: 999px;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 200ms ease, color 200ms ease, opacity 200ms ease;
+}
+
+.carousel__button:hover:not(:disabled) {
+  background: var(--tint);
+  color: var(--accent);
+}
+
+.carousel__button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.carousel__button--prev svg {
+  transform: rotate(180deg);
 }
 
 .project {

@@ -1,6 +1,6 @@
 # Jahanvi Sharma
 
-Portfolio site for Jahanvi Sharma, rebuilt from her Claude Design export as plain HTML and CSS. No framework, no JavaScript, no dependencies.
+Portfolio site for Jahanvi Sharma, rebuilt from her Claude Design export as plain HTML and CSS. No framework and no dependencies; the only script runs the Featured work carousel.
 
 ## Files
 
@@ -9,6 +9,7 @@ public/                    everything the site serves
   index.html               the page
   404.html                 shown for any address that does not exist
   assets/css/styles.css    all styles
+  assets/js/carousel.js    buttons and progress bar for the Featured work carousel
   assets/fonts/            Instrument Sans and Cabinet Grotesk, self hosted
   favicon.svg, favicon.ico, apple-touch-icon.png
   og-image.png             preview image for shared links
@@ -47,6 +48,7 @@ The export only contains the home page. Its links go to 13 more pages (Work, Too
 - Company names, skill pills and tool pills are plain text instead of links.
 - "See all nine projects", "How I use them" and "Read the longer version" are in the HTML with `hidden`. Delete `hidden` once their pages exist.
 - The Numer card stays hidden, as in the design's default setting. Delete `hidden` on it to show a sixth card.
+- Featured work is a carousel rather than a grid of tiles. Cards keep the same widths the grid gave them: three across on a desktop, two on a tablet, one on a phone. It scrolls, swipes and snaps on its own, so it still works with scripting off; `carousel.js` adds the buttons, the progress bar and the arrow key steps.
 
 Everything else matches the export: layout, type, colours, spacing and the load animation.
 
