@@ -70,7 +70,7 @@ The build spec describes more routes than are built so far: a work grid at `/wor
 
 To swap a still, replace the file in `assets/media` and keep the name. Reel stills are vertical and are held to their top edge so the episode title stays in frame.
 
-The hero footage sits behind the name under a wash that is only as strong as the type needs, and falls away towards the open right side. The hero crop is held low so the dark beam at the top of the clip stays clear of the name. The footer footage runs in a band of its own above the footer text, so it needs no wash at all. Text over the footage was measured frame by frame and clears the contrast thresholds.
+The hero footage sits behind the name under a wash that is only as strong as the type needs, and falls away towards the open right side. The hero crop is held low so the dark beam at the top of the clip stays clear of the name. Both bands end on a clean edge rather than fading out, which read as fog. The footer footage runs in a band of its own above the footer text, so it carries no wash at all. Text over the footage was measured across thirteen frames of the clip and clears the contrast thresholds.
 
 ## Credits
 

@@ -309,38 +309,24 @@ a:hover {
 }
 
 .hero__media::after {
-  background:
-    linear-gradient(
-      to right,
-      rgba(246, 243, 238, 0.55) 0%,
-      rgba(246, 243, 238, 0.53) 72%,
-      rgba(246, 243, 238, 0.28) 88%,
-      rgba(246, 243, 238, 0.15) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(246, 243, 238, 0) 62%,
-      rgba(246, 243, 238, 0.45) 87%,
-      var(--bg) 100%
-    );
+  background: linear-gradient(
+    to right,
+    rgba(246, 243, 238, 0.57) 0%,
+    rgba(246, 243, 238, 0.55) 72%,
+    rgba(246, 243, 238, 0.29) 88%,
+    rgba(246, 243, 238, 0.16) 100%
+  );
 }
 
 /* On a phone the type runs the full width, so the wash cannot fall away. */
 @media (max-width: 699px) {
   .hero__media::after {
-    background:
-      linear-gradient(to right, rgba(246, 243, 238, 0.55), rgba(246, 243, 238, 0.55)),
-      linear-gradient(
-        180deg,
-        rgba(246, 243, 238, 0) 62%,
-        rgba(246, 243, 238, 0.45) 87%,
-        var(--bg) 100%
-      );
+    background: rgba(246, 243, 238, 0.57);
   }
 }
 
 .site-footer__media::after {
-  background: linear-gradient(180deg, rgba(246, 243, 238, 0.45) 0%, rgba(246, 243, 238, 0) 26%);
+  background: none;
 }
 
 .hero__inner {
