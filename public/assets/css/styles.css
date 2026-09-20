@@ -39,6 +39,7 @@
   --accent: #8a3324;
   --muted: #6f665e;
   --subtle: #9a9086;
+  --muted-deep: #5b534b;
   --tint: #efe9e0;
   --stripe-a: #ece7df;
   --stripe-b: #e3ddd2;
@@ -49,6 +50,11 @@
   --font-display: "Cabinet Grotesk", "Instrument Sans", sans-serif;
   --font-body: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+
+  --glass: rgba(255, 255, 255, 0.5);
+  --glass-warm: rgba(246, 243, 238, 0.72);
+  --glass-edge: rgba(255, 255, 255, 0.72);
+  --glass-blur: blur(14px) saturate(1.4);
 
   --gutter: clamp(24px, 5vw, 48px);
   --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -79,7 +85,11 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1100px 620px at 8% 4%, rgba(138, 51, 36, 0.055), transparent 62%),
+    radial-gradient(900px 520px at 92% 28%, rgba(34, 30, 27, 0.045), transparent 60%);
+  background-repeat: no-repeat;
   color: var(--fg);
   font-family: var(--font-body);
   font-size: 17px;
@@ -257,7 +267,56 @@ a:hover {
 /* Hero */
 
 .hero {
+  position: relative;
+  min-height: clamp(440px, 62vh, 640px);
   padding: clamp(72px, 12vh, 140px) 0 clamp(56px, 8vh, 96px);
+}
+
+/* Ambient footage behind the hero and the footer, warmed down so the type
+   stays the loudest thing on the page. */
+.hero__media,
+.site-footer__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero__media video,
+.site-footer__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.72);
+}
+
+.hero__media::after,
+.site-footer__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.hero__media::after {
+  background: linear-gradient(
+    180deg,
+    rgba(246, 243, 238, 0.62) 0%,
+    rgba(246, 243, 238, 0.82) 46%,
+    rgba(246, 243, 238, 0.96) 86%,
+    var(--bg) 100%
+  );
+}
+
+.site-footer__media::after {
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    rgba(246, 243, 238, 0.93) 22%,
+    rgba(246, 243, 238, 0.88) 100%
+  );
+}
+
+.hero__inner {
+  position: relative;
 }
 
 .hero__title {
@@ -281,7 +340,7 @@ a:hover {
 
 .hero__meta {
   max-width: 44ch;
-  color: var(--muted);
+  color: var(--muted-deep);
 }
 
 /* Featured work */
@@ -381,9 +440,12 @@ a:hover {
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 1px solid var(--outline);
+  border: 1px solid var(--glass-edge);
   border-radius: 999px;
-  background: none;
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 1px 3px rgba(34, 30, 27, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.65);
   color: inherit;
   cursor: pointer;
   transition: background-color 200ms ease, color 200ms ease, opacity 200ms ease;
@@ -466,11 +528,28 @@ a:hover {
   object-fit: cover;
 }
 
+/* Reel stills are vertical. Holding the top keeps the episode title in frame. */
+.media-pair .media > img {
+  object-position: center top;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .media--video > img {
+    transition: transform 500ms var(--ease-out);
+  }
+
+  .media--video:hover > img {
+    transform: scale(1.04);
+  }
+}
+
 .media__label {
   position: relative;
   z-index: 1;
   padding: 5px 8px;
-  background: var(--bg);
+  background: var(--glass-warm);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 11px;
@@ -493,9 +572,12 @@ a:hover {
   width: 44px;
   height: 44px;
   margin: auto;
-  border: 1px solid var(--outline);
+  border: 1px solid var(--glass-edge);
   border-radius: 999px;
-  background: var(--bg);
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 2px 12px rgba(34, 30, 27, 0.14);
   color: var(--accent);
   transition: background-color 200ms ease, color 200ms ease;
 }
@@ -709,8 +791,12 @@ a:hover {
 
 .pill {
   padding: 10px 20px;
-  border: 1px solid var(--outline);
+  border: 1px solid var(--glass-edge);
   border-radius: 999px;
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 1px 3px rgba(34, 30, 27, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.65);
   font-size: 15px;
 }
 
@@ -737,10 +823,40 @@ a.pill:hover {
 
 /* About and contact */
 
+/* The portrait is tall and the copy beside it is short, so centre the copy
+   against it rather than leaving a hole under it. */
+@media (min-width: 700px) {
+  .about__split {
+    align-items: center;
+  }
+}
+
+.about__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 340px;
+  margin-top: 28px;
+  aspect-ratio: 5 / 6;
+  object-fit: cover;
+  border: 1px solid var(--rule-light);
+  box-shadow: 0 14px 34px rgba(34, 30, 27, 0.12);
+}
+
 .about__text {
   max-width: 38ch;
   font-size: clamp(19px, 2vw, 23px);
   line-height: 1.42;
+}
+
+.about__line {
+  max-width: 44ch;
+  margin-top: 14px;
+}
+
+.about__line--quiet {
+  color: var(--muted);
+  font-size: 15px;
 }
 
 .about .more {
@@ -779,12 +895,18 @@ a.pill:hover {
 /* Footer */
 
 .site-footer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-  gap: 32px;
+  position: relative;
   margin-top: 110px;
   padding: 44px var(--gutter) 64px;
   border-top: 1px solid var(--rule-light);
+  overflow: hidden;
+}
+
+.site-footer__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 32px;
 }
 
 .footer__name {
