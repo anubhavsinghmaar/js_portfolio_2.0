@@ -17,7 +17,7 @@ public/                       everything the site serves
   assets/js/video.js          loads the hero and footer videos when they come into view
   assets/media/               videos, stills and the portrait
   assets/fonts/               Instrument Sans and Cabinet Grotesk, self hosted
-  favicon.svg, favicon.ico, apple-touch-icon.png
+  favicon.ico, apple-touch-icon.png   built from the JS monogram
   og-image.png                preview image for shared links
 netlify.toml                  build, publish folder and headers
 ```
@@ -69,6 +69,8 @@ The build spec describes more routes than are built so far: a work grid at `/wor
 `assets/media` holds the hero and footer footage, the stills behind each work tile, and the portrait. The videos are compressed to about 900 KB each, carry no sound, and `video.js` only fetches them when they scroll close to view, and not at all for anyone who asks for less motion or is saving data. The poster image stands in for them.
 
 To swap a still, replace the file in `assets/media` and keep the name. Reel stills are vertical and are held to their top edge so the episode title stays in frame.
+
+The hero footage sits behind the name under a wash that is only as strong as the type needs, and falls away towards the open right side. The hero crop is held low so the dark beam at the top of the clip stays clear of the name. The footer footage runs in a band of its own above the footer text, so it needs no wash at all. Text over the footage was measured frame by frame and clears the contrast thresholds.
 
 ## Credits
 
