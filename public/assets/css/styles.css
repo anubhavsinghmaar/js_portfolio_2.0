@@ -228,12 +228,6 @@ a:hover {
   letter-spacing: -0.02em;
 }
 
-.section-note {
-  max-width: 42ch;
-  color: var(--muted);
-  font-size: 15px;
-}
-
 /* A heading on the left, content on the right. Used by About and Contact. */
 .split {
   display: grid;
