@@ -1,7 +1,7 @@
 [build]
   # Copies the site to dist/ and writes the live address (Netlify's $URL) into
-  # the og:image tag, which link previews need as an absolute URL.
-  command = 'rm -rf dist && cp -R public dist && sed -i.bak "s|%SITE_URL%|$URL|g" dist/index.html && rm dist/index.html.bak'
+  # the og:image tag on every page, which link previews need as an absolute URL.
+  command = 'rm -rf dist && cp -R public dist && find dist -name "*.html" -exec sed -i.bak "s|%SITE_URL%|$URL|g" {} + && find dist -name "*.html.bak" -delete'
   publish = "dist"
 
 [[headers]]
