@@ -37,7 +37,7 @@ If you add a custom domain later, redeploy once so the link preview uses the new
 These placeholders come from the design and are kept as they are:
 
 - **Email and social link.** `[FILL email]` and `[FILL social link]` appear twice in `index.html`: in the Contact section and in the footer. Replace the text with a link, for example `<a href="mailto:hello@example.com">hello@example.com</a>`.
-- **Project media.** Featured work has six striped frames marked `[FILL]`. Inside a `.media` frame, replace the `<span class="media__label">` with an `<img>`, `<video>` or `<iframe>`. It fills the 16:9 frame automatically.
+- **Project stills.** The frames in Featured work link out to the videos on YouTube and Instagram, but still show the striped placeholder. Add an `<img>` inside a `.media` frame and it fills the 16:9 frame, with the play button and label staying on top. The hidden Numer card still has no link.
 - **Resume.** Save the PDF as `public/assets/jahanvi-sharma-resume.pdf`, then delete `hidden` from the Download resume button.
 
 ## Differences from the design export
