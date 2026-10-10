@@ -47,7 +47,7 @@ These placeholders come from the design and are kept as they are:
 
 - **Resume.** Save the PDF as `public/assets/jahanvi-sharma-resume.pdf`, then delete `hidden` from the Download resume button.
 - **Dates and capture months.** `[FILL]` sits in the Period row on the HoppUp and Vera pages, and under the HoppUp result. The build spec asks every number to carry the month it was captured.
-- **Numer.** The hidden Numer card on the home page has no video link, and the two frames on `/work/numer/` are waiting for creator posts.
+- **Numer.** The hidden Numer card on the home page has no video link.
 - **Numer placement.** Listed as independent work, from the design. The build spec leaves open whether it was independent or an 18Five client.
 
 ## Differences from the design export
@@ -55,7 +55,7 @@ These placeholders come from the design and are kept as they are:
 The export only contains the home page. Its links go to 13 more pages (Work, Tools, About, one per company and one per skill) that were not included, so for now:
 
 - Work, Tools and About in the header, and the footer links, scroll to the matching section.
-- Skill pills and tool pills are plain text instead of links.
+- Tool pills are plain text instead of links. The By skill section has been removed.
 - "See all nine projects", "How I use them" and "Read the longer version" are in the HTML with `hidden`. Delete `hidden` once their pages exist.
 - The Numer card stays hidden, as in the design's default setting. Delete `hidden` on it to show a sixth card.
 - Company names in By company link to their own pages. The projects listed inside `/company/18five/` are plain text until the project pages exist.
@@ -67,7 +67,7 @@ The build spec describes more routes than are built so far: a work grid at `/wor
 
 ## Media
 
-`assets/media` holds the hero and footer footage, the stills behind each work tile, and the portrait. The videos are compressed to about 900 KB each, carry no sound, and `video.js` only fetches them when they scroll close to view, and not at all for anyone who asks for less motion or is saving data. The poster image stands in for them.
+`assets/media` holds the hero and footer footage, the stills behind each work tile, the portrait, and the four pages of the Numer creator brief, rendered from her design files at twice their print size. The videos are compressed to about 900 KB each, carry no sound, and `video.js` only fetches them when they scroll close to view, and not at all for anyone who asks for less motion or is saving data. The poster image stands in for them.
 
 To swap a still, replace the file in `assets/media` and keep the name. Reel stills are vertical and are held to their top edge so the episode title stays in frame.
 

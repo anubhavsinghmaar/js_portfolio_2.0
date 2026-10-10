@@ -12,7 +12,9 @@
     var next = buttons[1];
 
     function cards() {
-      return Array.prototype.slice.call(track.querySelectorAll('.project:not([hidden])'));
+      return Array.prototype.filter.call(track.children, function (card) {
+        return !card.hidden && getComputedStyle(card).scrollSnapAlign !== 'none';
+      });
     }
 
     // Scroll to the next card edge rather than a fixed distance, so it stays
