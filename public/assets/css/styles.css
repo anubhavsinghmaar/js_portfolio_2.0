@@ -681,6 +681,38 @@ a:hover {
   font-weight: 600;
 }
 
+.entry__about .entry__head {
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.entry__about .entry__head + .entry__metric {
+  margin-top: 6px;
+}
+
+.entry__roles {
+  max-width: 52ch;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.entry__roles li + li {
+  margin-top: 6px;
+}
+
+.entry__roles strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.entry__about .entry__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-top: 18px;
+}
+
 /* Inner pages: company, role and project pages */
 
 .page-hero {
@@ -769,6 +801,19 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 340px));
   gap: 24px;
+}
+
+.prose p {
+  max-width: 62ch;
+}
+
+.prose p + p {
+  margin-top: 14px;
+}
+
+.media--film {
+  padding: 0;
+  background: var(--fg);
 }
 
 .result {

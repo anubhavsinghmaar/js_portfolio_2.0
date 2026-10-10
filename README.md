@@ -11,6 +11,7 @@ public/                       everything the site serves
   work/hoppup/index.html      HoppUp, the role page
   work/numer/index.html       Numer, the campaign page
   work/vera/index.html        Vera with CGAPP, the role page
+  work/akshay_kumar_film/     JK Maxx Paints x Akshay Kumar case study
   404.html                    shown for any address that does not exist
   assets/css/styles.css       all styles
   assets/js/carousel.js       buttons and progress bar for the Featured work carousel
